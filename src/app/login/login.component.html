@@ -1,0 +1,46 @@
+<p>
+  Login
+  <span class="flex-spacer"></span>
+</p>
+
+<form novalidate #loginform="ngForm">
+  <p>
+    <input
+      matInput
+      name="username"
+      placeholder="UserName"
+      type="text"
+      [(ngModel)]="user.username"
+      #username="ngModel"
+      required
+    />
+    <mat-error *ngIf="username.errors?.required"
+      >UserName is required</mat-error
+    >
+    <span class="flex-spacer"></span>
+    <input
+      matInput
+      name="password"
+      placeholder="Password"
+      type="password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      required
+    />
+    <mat-error *ngIf="password.errors?.required">
+      Password is required</mat-error
+    >
+  </p>
+  <span class="flex-spacer"></span>
+  <button
+    mat-button
+    type="submit"
+    class="background-primary text-floral-white"
+    (click)="onSubmit()"
+    [disabled]="loginform.form.invalid"
+  >
+    Login
+  </button>
+  <br />
+  <span style="color:red">{{error}}</span>
+</form>
